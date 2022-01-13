@@ -1,22 +1,28 @@
-const cohort1 = process.argv[2]
-const userName = process.env.USERNAME
+// to inject the config vars inside the .env
+require('dotenv').config()
 
-if (cohort1 === 'web-49') {
-    console.log(`${cohort1} is the best forever!`)
-} else {
-    console.log(`booooh! cohort ${cohort1}`)
-}
+// const cohort1 = process.argv[2]
+// const user = process.env.USER
+// const shell = process.env.SHELL
 
-console.log(`the user is ${userName}`)
+// if (cohort1 === 'web-49') {
+//   console.log(`${cohort1} is the best forever!`)
+// } else {
+//   console.log(`booooh cohort ${cohort1}`)
+// }
+
+// console.log(`the user is ${user}`)
+// console.log(`the shell is ${shell}`)
 
 const express = require('express')
 const app = express()
 
 app.get('/hello', (req, res) => {
-    res.json({ message: 'hey there' })
+  res.json({ message: 'hey there'})
 })
 
+// heroku wants to set its own port
 const port = process.env.PORT || 9000
 app.listen(port, () => {
-    console.log(`Listening on port, ${port}`)
+  console.log(`listening on port ${port}`)
 })
